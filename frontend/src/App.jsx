@@ -1,13 +1,16 @@
 import "./App.scss";
 import React from "react";
-import Board from "./components/Board";
 import NavBar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
+import BoardPage from "./pages/BoardPage";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <Board />
+      <Routes>
+        <Route path="/" element={<BoardPage />} />
+      </Routes>
     </div>
   );
 }

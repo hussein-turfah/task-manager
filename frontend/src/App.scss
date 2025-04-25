@@ -3,6 +3,18 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #282c34;
+  color: white;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
 }
 
 .logo {
