@@ -18,9 +18,7 @@ exports.createTag = async (req, res) => {
 
 exports.getTags = async (req, res) => {
   try {
-    const tags = await Tag.findAll({
-      order: [['name', 'ASC']],
-    })
+    const tags = await Tag.findAll()
     res.json(tags);
   } catch (error) {
     res.status(500).json({ message: 'Failed to get tags', error: error.message });

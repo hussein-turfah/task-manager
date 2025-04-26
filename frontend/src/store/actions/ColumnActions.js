@@ -6,7 +6,7 @@ export const ACTIONS = {
 
 export const getColumns = () => async (dispatch) => {
   try {
-    const { data } = await axios.get('/api/columns');
+    const { data } = await axios.get("/api/columns");
 
     dispatch({
       type: ACTIONS.GET_COLUMNS,

@@ -16,7 +16,31 @@ export const moveTask = (id, column_id, position) => async (dispatch) => {
     });
 
     dispatch(getColumns());
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+
+export const createTask = ({
+  title,
+  description,
+  column_id,
+  tag_id,
+  position,
+  otherTag,
+}) => async (dispatch) => {
+  try {
+    const { data } = await axios.post('/api/tasks', {
+      title,
+      description,
+      column_id,
+      tag_id,
+      position,
+      other_tag: otherTag,
+    });
+
+    dispatch(getColumns());
   } catch (error) {
     console.log(error);
   }
