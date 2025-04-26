@@ -1,10 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./src/database/database");
+const cors = require("cors");
 const app = express();
 const routes = require("./src/routes");
 
 app.use(express.json());
+app.use(cors());
 
 const syncDatabase = async () => {
   try {
