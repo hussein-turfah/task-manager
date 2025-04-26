@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const sequelize = require("./src/database/database");
 const app = express();
+const routes = require("./src/routes");
 
 app.use(express.json());
 
@@ -15,6 +16,7 @@ const syncDatabase = async () => {
   }
 };
 
+app.use("/api", routes);
 app.get("/status", (req, res) => {
   res.json({ message: "API is working!" });
 });
