@@ -60,3 +60,13 @@ exports.moveTask = async (req, res) => {
     res.status(500).json({ message: 'Failed to move task', error: error.message });
   }
 };
+
+exports.deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Task.destroy({ where: { id } });
+    res.json({ message: 'Task deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to delete task', error: error.message });
+  }
+};
