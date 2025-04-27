@@ -21,7 +21,6 @@ export const createTag = (tag) => async (dispatch) => {
 export const getTags = () => async (dispatch) => {
   try {
     const { data } = await axios.get("/api/tags")
-    console.log({data})
     dispatch({
       type: ACTIONS.GET_TAGS,
       data

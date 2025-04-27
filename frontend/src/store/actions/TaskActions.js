@@ -27,7 +27,6 @@ export const createTask = ({
   description,
   column_id,
   tag_id,
-  position,
   otherTag,
 }) => async (dispatch) => {
   try {
@@ -36,7 +35,6 @@ export const createTask = ({
       description,
       column_id,
       tag_id,
-      position,
       other_tag: otherTag,
     });
 

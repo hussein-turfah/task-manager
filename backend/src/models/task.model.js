@@ -13,6 +13,7 @@ const Task = sequelize.define('Task', {
   position: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    defaultValue: 0
   },
   column_id: {
     type: DataTypes.INTEGER,
