@@ -15,13 +15,11 @@ export default function Column({ column, tasks }) {
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            {tasks?.map((task, index) => (
+            {tasks?.sort((a, b) => a.position - b.position)?.map((task, index) => (
               <TaskCard key={task?.id} task={task} index={index} />
             ))}
             {provided.placeholder}
-            <div className={styles.addTask}>
-              <TaskComposer columnId={column?.id} />
-            </div>
+            <TaskComposer columnId={column?.id} />
           </div>
         )}
       </Droppable>

@@ -28,7 +28,6 @@ const BoardPage = () => {
     let selectedTask = null;
 
     const updatedColumns = data.map((column) => {
-      console.log(column.id, source.droppableId, destination.droppableId);
       if (column.id.toString() === source.droppableId.toString()) {
         const newTasks = [...column.Tasks];
         selectedTask = newTasks[source.index];
@@ -38,6 +37,7 @@ const BoardPage = () => {
       if (column.id.toString() === destination.droppableId.toString()) {
         const newTasks = [...column.Tasks];
         newTasks.splice(destination.index, 0, { ...selectedTask });
+        console.log({ newTasks });
         return { ...column, Tasks: newTasks };
       }
       return column;
