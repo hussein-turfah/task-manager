@@ -12,6 +12,7 @@ exports.getAllTaskHistories = async (req, res) => {
           attributes: ['name'],
         }],
       }],
+      order: [['createdAt', 'DESC']],
     });
     res.json(taskHistories);
   } catch (error) {

@@ -1,20 +1,33 @@
-const { Task, TaskHistory } = require("../models");
+const { Task, TaskHistory, Tag } = require("../models");
 
 
 exports.createTask = async (req, res) => {
   try {
-    const { title, description, column_id, tag_id, position } = req.body;
-    const task = await Task.create({ title, description, column_id, tag_id, position });
+    const { title, description, column_id, tag_id, other_tag } = req.body;
+
+    let new_tag_id;
+    if (other_tag && other_tag !== "" && tag_id === "other") {
+      const tag = await Tag.create({ name: other_tag });
+      new_tag_id = tag.id;
+    }
+
+    const task = await Task.create({
+      title,
+      description,
+      column_id,
+      tag_id: new_tag_id || tag_id,
+      position: 0
+    });
 
     await TaskHistory.create({
       task_id: task.id,
       new_column_id: column_id,
-      position,
-      action: 'created'
+      action: 'created in'
     });
 
     res.status(201).json(task);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: 'Failed to create task', error: error.message });
   }
 };
@@ -30,12 +43,11 @@ exports.moveTask = async (req, res) => {
     }
 
     const old_column_id = task.column_id;
-    const old_position = task.position;
-
+  const old_position = task.position;
     await task.update({ column_id, position });
 
     let action
-    if (column_id === old_column_id) {
+    if (column_id.toString() === old_column_id.toString()) {
       if (position > old_position) {
         action = 'moved down';
       } else {
@@ -57,6 +69,7 @@ exports.moveTask = async (req, res) => {
 
     res.json({ message: 'Task moved successfully' });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: 'Failed to move task', error: error.message });
   }
 };
