@@ -13,6 +13,11 @@ const ColumnsData = (state = initialState, { type, data }) => {
         data,
         loading: false,
       };
+    case ACTIONS.SET_COLUMNS:
+      return {
+        ...state,
+        data,
+      };
     default:
       return state;
   }

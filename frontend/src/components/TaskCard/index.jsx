@@ -14,7 +14,7 @@ export default function TaskCard({ task, index }) {
         >
           <h4>{task.title}</h4>
           <p>{task.description}</p>
-          <small className={styles.tag}>{task.Tag.name}</small>
+          <small className={styles.tag}>{task?.Tag?.name}</small>
         </div>
       )}
     </Draggable>

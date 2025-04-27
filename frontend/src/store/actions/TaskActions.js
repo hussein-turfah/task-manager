@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import axios from "../../utils/Http";
 import { getColumns } from "./ColumnActions";
 
@@ -10,14 +11,16 @@ export const ACTIONS = {
 
 export const moveTask = (id, column_id, position) => async (dispatch) => {
   try {
-    const { data } = await axios.put(`/api/tasks/${id}/move`, {
+    const { data } = await axios.put(`/tasks/${id}/move`, {
       column_id,
       position,
     });
 
-    dispatch(getColumns());
+    // dispatch(getColumns());
+    toast.success("Task moved successfully");
   } catch (error) {
     console.log(error);
+    toast.error("Error moving task");
   }
 }
 
@@ -30,7 +33,7 @@ export const createTask = ({
   otherTag,
 }) => async (dispatch) => {
   try {
-    const { data } = await axios.post('/api/tasks', {
+    const { data } = await axios.post('/tasks', {
       title,
       description,
       column_id,
@@ -39,7 +42,9 @@ export const createTask = ({
     });
 
     dispatch(getColumns());
+    toast.success("Task created successfully");
   } catch (error) {
     console.log(error);
+    toast.error("Error creating task");
   }
 }
