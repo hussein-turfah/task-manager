@@ -1,14 +1,22 @@
 import React from "react";
 import styles from "./index.module.scss";
+import { Draggable } from "@hello-pangea/dnd";
 
-function TaskCard({ task }) {
+export default function TaskCard({ task, index }) {
   return (
-    <div className={styles.container}>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
-      <small className={styles.tag}>{task.tag}</small>
-    </div>
+    <Draggable draggableId={task.id.toString()} index={index}>
+      {(provided) => (
+        <div
+          className={styles.container}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          <h4>{task.title}</h4>
+          <p>{task.description}</p>
+          <small className={styles.tag}>{task.Tag.name}</small>
+        </div>
+      )}
+    </Draggable>
   );
 }
-
-export default TaskCard;

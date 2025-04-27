@@ -1,0 +1,58 @@
+.closed {
+  padding: 8px;
+  color: #444;
+  cursor: pointer;
+}
+
+.composer {
+  background: #f0f0f0;
+  padding: 8px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .input {
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+  }
+
+  >textarea {
+    width: 100%;
+    min-height: 50px;
+    border: none;
+    border-radius: 3px;
+  }
+
+  >select {
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 4px;
+    text-transform: capitalize;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+
+    .addBtn {
+      background: #5aac44;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .cancelBtn {
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
+}
