@@ -6,7 +6,7 @@ export const ACTIONS = {
 
 export const getTaskHistory = () => async (dispatch) => {
   try {
-    const { data } = await axios.get('/api/task-histories');
+    const { data } = await axios.get('/task-histories');
     dispatch({
       type: ACTIONS.GET_TASK_HISTORY,
       data

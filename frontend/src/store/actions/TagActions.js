@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import axios from "../../utils/Http";
 
 export const ACTIONS = {
@@ -7,20 +8,22 @@ export const ACTIONS = {
 
 export const createTag = (tag) => async (dispatch) => {
   try {
-    const { data } = await axios.post("/api/tags", tag)
+    const { data } = await axios.post("/tags", tag)
 
     dispatch({
       type: ACTIONS.CREATE_TAG,
       data
     })
+    toast.success("Tag created successfully")
   } catch (error) {
     console.log(error);
+    toast.error("Error creating tag")
   }
 };
 
 export const getTags = () => async (dispatch) => {
   try {
-    const { data } = await axios.get("/api/tags")
+    const { data } = await axios.get("/tags")
     dispatch({
       type: ACTIONS.GET_TAGS,
       data
