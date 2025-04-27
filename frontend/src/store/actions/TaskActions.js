@@ -16,7 +16,7 @@ export const moveTask = (id, column_id, position) => async (dispatch) => {
       position,
     });
 
-    // dispatch(getColumns());
+    dispatch(getColumns());
     toast.success("Task moved successfully");
   } catch (error) {
     console.log(error);

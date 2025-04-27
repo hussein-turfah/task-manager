@@ -4,7 +4,7 @@ import { Draggable } from "@hello-pangea/dnd";
 
 export default function TaskCard({ task, index }) {
   return (
-    <Draggable draggableId={task.id.toString()} index={index}>
+    <Draggable draggableId={task?.id?.toString()} index={index}>
       {(provided) => (
         <div
           className={styles.container}
