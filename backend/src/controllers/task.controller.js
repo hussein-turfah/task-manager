@@ -43,7 +43,7 @@ exports.moveTask = async (req, res) => {
     }
 
     const old_column_id = task.column_id;
-  const old_position = task.position;
+    const old_position = task.position;
     await task.update({ column_id, position });
 
     let action
